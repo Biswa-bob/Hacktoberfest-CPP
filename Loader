@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link href="loader.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<div class="load">
+<section class="pre-loader">
+    <div class="part1">
+        <img src="img/crown.png" style="width:10rem;height:150px;" >
+        
+    </div>
+    <div class="loader">
+        <div class="loading">
+        </div>
+      </div>
+
+
+  
+
+</section>
+
+</div>
+<body>
+    <div style="color:white;">prateek</div>
+    
+      
+    <script>
+$(window).load(function() { 
+			 
+			$('.load').delay(3000).fadeOut('slow'); 	
+});
+    </script>
+      
+    
+</body>
+</html>
