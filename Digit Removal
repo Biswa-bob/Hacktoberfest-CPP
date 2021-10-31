@@ -1,0 +1,121 @@
+#include <bits/stdc++.h>
+#define ll long long int
+#define pb push_back
+using namespace std;
+ll ans = 0;
+void solve();
+void res(ll n,int d);
+int main() {
+	// your code goes here
+	ll t; cin>>t;
+	while(t--)
+	{
+	    solve();
+	}
+	return 0;
+}
+void solve()
+{
+    ll num , n , dup=0;
+    int d , flag = 0;
+    cin>>num>>d;
+    n = num;
+    vector<int>v ;
+    while(num)
+    {
+        int rem = num % 10;
+        v.pb(rem); 
+        num = num/10;
+    }
+    reverse(v.begin(),v.end());
+    for(int i=0;i<v.size();i++)
+    {
+        if(v[i]==d)
+        {
+            flag = 1; 
+            break;
+        }
+    }
+    int index;
+    if(flag==1)
+    {
+        if(d==0)
+        {
+            for(int i=0;i<v.size();i++)
+            {
+                if(v[i]==0)
+                {
+                   index = i; 
+                   break;
+                }
+                dup = dup*10+v[i];
+            }
+            for(int i = index;i<v.size();i++)
+            {
+                dup = dup*10+1;
+            }
+            cout<<(dup-n)<<endl;
+        }
+        else
+            res(n,d);
+    }
+    else
+        cout<<0<<endl;
+    
+}
+void res(ll n,int d)
+{
+    ll n1,dup=0;
+    vector<int>v1;
+    int flag = 0;
+    n1 = n;
+    while(n)
+    {
+        int rem = n % 10;
+        v1.pb(rem);
+        n/=10;
+    }
+    reverse(v1.begin(),v1.end());
+    int index;
+    for(int i=0;i<v1.size();i++)
+    {   
+        dup = dup*10+v1[i];
+        if(v1[i]==d)
+        {
+            index = i;
+            break;
+        }
+    }
+    int power = v1.size()-(index+1);
+    dup = dup+1;
+    dup = dup * pow(10,power);
+    ll result = dup-n1;
+     ans += result;
+     ll dup1 = dup;
+    v1.clear();
+    while(dup)
+    {
+        int rem = dup%10;
+        v1.pb(rem);
+        dup = dup / 10;
+    }
+    reverse(v1.begin(),v1.end());
+    for(int i=0;i<v1.size();i++)
+    {
+        if(v1[i]==d)
+        {
+            flag = 1;
+            break;
+        }
+        
+    }
+    if(flag == 1)
+        res(dup1,d);
+    else
+    {
+        cout<<ans<<endl;
+        ans = 0;
+        return;
+    }
+    
+}
